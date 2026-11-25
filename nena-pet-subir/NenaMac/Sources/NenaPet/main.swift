@@ -105,7 +105,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         _ = AXIsProcessTrustedWithOptions(opts)
         NSEvent.addGlobalMonitorForEvents(matching: [.keyDown]) { [weak self] e in
             guard let s = self, !e.isARepeat else { return }
-            s.cat.keyPress(s.now())
+            s.countKey()
         }
         NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseDown, .rightMouseDown, .scrollWheel]) { [weak self] _ in
             guard let s = self else { return }; s.cat.activity(s.now())
@@ -115,7 +115,27 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         RunLoop.main.add(timer!, forMode: .common)
     }
 
+    // Cuenta una pulsación (sin duplicados entre las dos vías de detección)
+    var lastKeyCountMs = -1e9
+    func countKey() {
+        let t = now()
+        if t - lastKeyCountMs < 35 { return }
+        lastKeyCountMs = t
+        cat.keyPress(t)
+    }
+
+    // Segunda vía, independiente del idioma: se mira el reloj de eventos del sistema.
+    // Con teclados chinos, japoneses o coreanos (editores IME) el editor consume la tecla y el monitor global no la ve,
+    // pero el sistema sí registra que hubo una pulsación de teclado.
+    var lastKeySecs = Double.greatestFiniteMagnitude
+    func pollKeyboard() {
+        let secs = CGEventSource.secondsSinceLastEventType(.combinedSessionState, eventType: .keyDown)
+        if secs < lastKeySecs - 0.002 { countKey() }
+        lastKeySecs = secs
+    }
+
     func frame() {
+        pollKeyboard()
         let t = now()
         // cursor relativo a la ventana (origen arriba a la izquierda)
         let m = NSEvent.mouseLocation, f = window.frame
