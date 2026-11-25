@@ -1,0 +1,6 @@
+dist/
+portable/
+stage/
+payload.zip
+.build/
+*.dmg

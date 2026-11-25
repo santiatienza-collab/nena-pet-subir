@@ -1,0 +1,22 @@
+name: Build macOS
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compilar y empaquetar
+        run: |
+          SCRIPT=$(find . -name build-mac.sh | head -n 1)
+          echo "Proyecto en: $SCRIPT"
+          cd "$(dirname "$SCRIPT")"
+          bash build-mac.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NenaPet-macOS
+          path: |
+            **/dist/NenaPet.dmg
+            **/dist/NenaPet-mac.zip
