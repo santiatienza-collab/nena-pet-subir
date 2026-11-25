@@ -19,7 +19,7 @@ ZIP=$(find "$PWD" -name frames.zip | head -n 1)
 echo "Fotogramas: $ZIP"
 mkdir -p "$APP/Contents/Resources/frames"
 if [ -n "$ZIP" ]; then
-  TMP=$(mktemp -d); ditto -x -k "$ZIP" "$TMP"
+  TMP=$(mktemp -d); unzip -q -o "$ZIP" -d "$TMP" || python3 -m zipfile -e "$ZIP" "$TMP"
   cp "$TMP"/frames/*.png "$APP/Contents/Resources/frames/" 2>/dev/null || cp "$TMP"/*.png "$APP/Contents/Resources/frames/"
 elif [ -d Resources/frames ]; then
   cp Resources/frames/*.png "$APP/Contents/Resources/frames/"
