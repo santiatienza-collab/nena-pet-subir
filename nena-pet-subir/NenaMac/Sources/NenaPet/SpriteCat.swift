@@ -104,7 +104,7 @@ final class Cat {
     }
 
     private func drawEyes(_ c: CGContext) {
-        let lidBrown = CGColor(srgbRed: 108/255, green: 81/255, blue: 61/255, alpha: 1)
+        let lidBrown = CGColor(srgbRed: 42/255, green: 28/255, blue: 22/255, alpha: 1)
         let lineC = CGColor(srgbRed: 30/255, green: 18/255, blue: 14/255, alpha: 1)
         let darkC = CGColor(srgbRed: 20/255, green: 12/255, blue: 14/255, alpha: 1)
         for i in 0..<2 {
