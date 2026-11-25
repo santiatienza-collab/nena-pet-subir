@@ -1,0 +1,24 @@
+NENA PET para macOS (versión nativa en Swift/AppKit, mismo dibujo y comportamiento que la de Windows)
+
+CÓMO OBTENER EL INSTALABLE (.dmg)
+  Opción A - en un Mac:
+      xcode-select --install        (una sola vez)
+      cd NenaMac && ./build-mac.sh
+      -> dist/NenaPet.dmg  y  dist/NenaPet-mac.zip
+  Opción B - sin Mac: sube el repositorio (con la carpeta .github de la raíz) a GitHub y ejecuta la acción "Build macOS"
+      (pestaña Actions). Al terminar, descarga el artefacto "NenaPet-macOS".
+
+INSTALAR
+  Abre NenaPet.dmg y arrastra "Nena Pet" a Aplicaciones.
+  La primera vez, macOS dirá que no puede verificar al desarrollador (la app no está firmada con cuenta de Apple):
+  clic derecho sobre la app > Abrir > Abrir.
+  Si no abre: Ajustes del Sistema > Privacidad y seguridad > "Abrir igualmente".
+
+PERMISO DE TECLADO
+  Para que Nena golpee el teclado cuando escribes, concede el permiso a "Nena Pet" en
+  Ajustes del Sistema > Privacidad y seguridad > Accesibilidad (y/o Supervisión de entrada). Reinicia la app después.
+
+USO
+  Arrastra a Nena para moverla, clic = miau, clic derecho o icono de la barra de menús = tamaño, ocultar, sonidos,
+  iniciar con el Mac y salir. Sonidos propios: carpeta ~/Library/Application Support/NenaPet/sonidos
+  (ficheros que empiecen por "miau" o "purr").

@@ -1,0 +1,9 @@
+Sonidos de Nena Pet
+
+meow1.wav  - "Meow of a Siamese cat" - freemaster2 - CC0 (Wikimedia Commons)
+             https://commons.wikimedia.org/wiki/File:Meow_of_a_Siamese_cat_-_freemaster2.wav
+meow3.flac - "2015-11-24 niaourisma Niaou" - Tsester - CC0 (Wikimedia Commons)
+             https://commons.wikimedia.org/wiki/File:2015-11-24.%CE%BD%CE%B9%CE%B1%CE%BF%CF%8D%CF%81%CE%B9%CF%83%CE%BC%CE%B1.%CE%9D%CE%B9%CE%AC%CE%BF%CF%85.noise_reduced.flac
+purr.wav   - "cat_purrsleepy_loop" (pack "cat purr meow", OpenGameArt) - CC0
+             https://opengameart.org/content/cat-purr-meow
+             Procesado: se han regenerado los armonicos audibles del pulso de 25 Hz y quitado el siseo (tools/purr.js).
